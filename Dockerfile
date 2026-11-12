@@ -14,4 +14,4 @@ EXPOSE 5678
 
 USER node
 
-CMD ["n8n"]
+CMD ["n8n", "start"]
