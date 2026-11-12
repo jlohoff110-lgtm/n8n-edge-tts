@@ -1,9 +1,17 @@
-FROM n8nio/n8n:latest
+FROM node:18-alpine
 
 USER root
 
-# Python 3 und pip über apt installieren für Edge-TTS
-RUN apt-get update && apt-get install -y python3 python3-pip && \
-    pip3 install --no-cache-dir --break-system-packages edge-tts
+# System-Abhängigkeiten und Python/pip für Alpine installieren
+RUN apk update && \
+    apk add --no-cache python3 py3-pip && \
+    python3 -m pip install --no-cache-dir --break-system-packages edge-tts
+
+# n8n global installieren
+RUN npm install -g n8n
+
+EXPOSE 5678
 
 USER node
+
+CMD ["n8n"]
