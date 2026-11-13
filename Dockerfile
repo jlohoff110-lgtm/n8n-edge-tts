@@ -12,4 +12,3 @@ EXPOSE 5678
 USER node
 
 ENTRYPOINT ["node", "/usr/local/lib/node_modules/n8n/bin/n8n"]
-CMD ["start"]
